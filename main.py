@@ -19,9 +19,10 @@ def parser(filename):
 def country_list(block):
     country = []
     for i, values in enumerate(block):
+        values = values.strip('"')
         if i % 2 == 0:
             continue
-        if values == '"---"':
+        if values == "---":
             continue
         if values in country:
             continue
@@ -30,7 +31,8 @@ def country_list(block):
     return country
 
 def country_remove_list(country):
-    remove_list = ['"CAS"','"HUN"']
+    remove_list = ["CAS", "HUN", "POL", "YAO", "MAM", "SIC", "TRS", "HAB",
+                   "MOS", "MLO", "VEN", "ADU", "HES", '""', '""', '""', '""', '""']
     alive_country = []
     for i in country:
         if i not in remove_list:
@@ -54,7 +56,15 @@ def main():
     #print(country)
     alive_country = country_remove_list(country)
     command = finally_command(alive_country)
-    print(command)
-    print(len(command))
+    #print(command)
+    #print(len(command))
+
+    try:
+        with open('file_with_commands.txt',"x") as f:
+            f.write(command)
+    except FileExistsError:
+        print("Файл вже є, мужик")
+
+
 
 main()
