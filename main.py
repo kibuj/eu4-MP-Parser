@@ -30,9 +30,26 @@ def country_list(block):
     return country
 
 
+def finally_command(country, remove_list):
+    for i in country:
+        pass
+    print(country)
+    #country.remove('"CAS"')
+    command = ''
+    for i in country:
+        for j in country:
+            if i == j:
+                continue
+            else:
+                command += f"clearae {i} {j}\n"
+    return command
+
+
 def main():
     penis = parser('TEST.eu4')
     country = country_list(penis)
-    print(country)
+    command = finally_command(country,None)
+    #print(command)
+    #print(len(command))
 
 main()
