@@ -31,8 +31,7 @@ def country_list(block):
     return country
 
 def country_remove_list(country):
-    remove_list = ["CAS", "HUN", "POL", "YAO", "MAM", "SIC", "TRS", "HAB",
-                   "MOS", "MLO", "VEN", "ADU", "HES", '""', '""', '""', '""', '""']
+    remove_list = []
     alive_country = []
     for i in country:
         if i not in remove_list:
